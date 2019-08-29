@@ -3,7 +3,7 @@ const ReactDOM=require("react-dom");
 const client=require("./client");
 
 class App extends React.Component{
-    constructor(props){
+    /**constructor(props){
        super(props);
        this.state={employees:[]};
     }
@@ -15,6 +15,11 @@ class App extends React.Component{
     render(){
         return(
             <EmployeeList employees={this.state.employees}/>
+        )
+    }**/
+    render(){
+        return (
+           <div> <b> Welcome to first react App using Spring boot </b></div>
         )
     }
 }

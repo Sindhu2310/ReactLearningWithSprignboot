@@ -9,9 +9,16 @@ public class Employee{
     private String name;
     private String description;
     public Employee(String name,String description){
+        super();
         this.name=name;
         this.description=description;
     }
+
+    public Employee(){
+
+    }
+
+
 
     @Override
     public boolean equals(Object o){

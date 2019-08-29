@@ -34790,38 +34790,31 @@ var App =
 function (_React$Component) {
   _inherits(App, _React$Component);
 
-  function App(props) {
-    var _this;
-
+  function App() {
     _classCallCheck(this, App);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
-    _this.state = {
-      employees: []
-    };
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(App).apply(this, arguments));
   }
 
   _createClass(App, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      client({
-        method: 'GET',
-        path: '/api/employees'
-      }).done(function (response) {
-        _this2.setState({
-          employees: response.entity._embedded.employees
-        });
-      });
-    }
-  }, {
     key: "render",
+
+    /**constructor(props){
+       super(props);
+       this.state={employees:[]};
+    }
+    componentDidMount(){
+      client({method: 'GET', path: '/api/employees'}).done(response => {
+    this.setState({employees: response.entity._embedded.employees});
+    });
+    }
+    render(){
+        return(
+            <EmployeeList employees={this.state.employees}/>
+        )
+    }**/
     value: function render() {
-      return React.createElement(EmployeeList, {
-        employees: this.state.employees
-      });
+      return React.createElement("div", null, " ", React.createElement("b", null, " Welcome to first react App using Spring boot "));
     }
   }]);
 
