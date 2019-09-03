@@ -1,4 +1,4 @@
-import EmployeeList from "./EmployeeList.js";
+import Employee from "./Employee.js";
 
 const React=require("react");
 const ReactDOM=require("react-dom");
@@ -10,14 +10,46 @@ class App extends React.Component{
        this.state={employees:[]};
     }
     componentDidMount(){
-      client({method: 'GET', path: '/api/employees'}).done(response => {
-			this.setState({employees: response.entity._embedded.employees});
-		});
+     fetch("https://3000-d2a8f940-c18a-423b-8cf5-78aafc526c83.ws-ap0.gitpod.io/api/employees")
+     //.then(res=>res.json())
+     .then(async (res)=>{
+         return await res.json()
+     }).then((data)=>
+     {
+         console.log(data._embedded);
+         this.setState({employees:data._embedded.employees})
+     })
+         .catch(console.log)
+
+
+
     }
     render(){
-        return(
+       /** return(
             <EmployeeList employees={this.state.employees}/>
-        )
+        )**/
+        console.log(this.state.employees);
+           let employeeList =  this.state.employees==null || this.state.employees.length==0? <tr><td>Loading</td></tr>:
+   this.state.employees.map(e=> {
+//console.log(e);
+        return  <Employee key={e._links.self.href} name={e.name} description={e.description}/>
+        });
+
+
+
+    return (
+        <table>
+<thead>
+<tr>
+	<th>Name</th>
+						<th>Description</th>
+</tr>
+</thead>
+        <tbody>
+        {employeeList}
+        </tbody>
+        </table>
+    )
     }
    /** render(){
         return (

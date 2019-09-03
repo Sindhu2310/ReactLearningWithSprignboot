@@ -6,8 +6,8 @@ class Employee extends React.Component {
     render() {
         return (
             <tr>
-                <td>{this.props.employee.name}</td>
-                <td>{this.props.employee.description}</td>
+                <td>{this.props.name}</td>
+                <td>{this.props.description}</td>
             </tr>
         )
     }
